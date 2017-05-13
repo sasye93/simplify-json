@@ -1,6 +1,6 @@
 # simplify-json
 easy-to-use toolkit to handle JSON objects in node.js that lets you work with string paths.
-I originally build this for my to handle mongoose models in an automated way. Please note that this is still under development and use own your own risk.
+I originally build this to handle mongoose models in an automated way. Please note that this is still under development and use on your own risk.
 
 ## Installation
 Install via npm:
@@ -16,49 +16,71 @@ $ npm install
 
 ## Usage
 
-Provided methods are listed below, each one with exemplary use.
+Provided methods are listed below, each one with exemplary use on "myJSON" object.
 
-#### function empty(json)
-Returns true if json is empty, false otherwise:
+```
+let myJSON = {
+  foo: {
+    fooMore: {
+      fooMost: "hey!",
+      fooMass: "bye!"
+    },
+    fooArray: [ 1,2,3,5 ]
+  },
+};
+```
+
+### function empty(json)
+Returns true if json is empty, false otherwise.
 ```
 empty({}) === true;
-empty({ foo: "bar" }) === false;
+empty(myJSON) === false;
 ```
-#### function getNested(json, path)
+No alias.
+### function getNested(json, path)
 Returns the value of a nested key using string syntax for path.
 ```
-getNested({ foo: { fooMore: { fooMost: "hey!" } } }, "foo.fooMore.fooMost") === "hey!";
+getNested(myJSON, "foo.fooMore.fooMost"); // returns "hey!"
+getNested(myJSON, "foo.fooMore.fooNo"); // returns undefined
 ```
-alias is get(json, path)
-#### function modifyNested(json, path, value)
+alias is get(json, path).
+### function modifyNested(json, path, value)
 Changes the value of a nested key using string syntax for path.
 ```
-let myJSON = { foo: { fooMore: { fooMost: "hey!" } } };
-modifyNested(myJSON, "foo.fooMore.fooMost", "bye!");
-myJSON === { foo: { fooMore: { fooMost: "bye!" } } };
+let result = modifyNested(myJSON, "foo.fooMore.fooMost", "bye!"); // returns true if new value was set,
+false if key not found.
+
+// effect on myJSON if result === true:
+myJSON.foo.fooMore.fooMost === "bye!";
 ```
-alias is modify(json, path, value)
-#### function removeNested(json, path)
+alias is modify(json, path, value).
+### function removeNested(json, path)
 Removes a nested key using string syntax for path.
 ```
-let myJSON = { foo: { fooMore: { fooMost: "hey!", fooMass: "bye!" } } };
-modifyNested(myJSON, "foo.fooMore.fooMass");
-myJSON === { foo: { fooMore: { fooMost: "hey!" } } };
+let removedItem = removeNested(myJSON, "foo.fooMore.fooMass"); // returns removed value if key was removed,
+undefined if key not found.
+
+// effect on myJSON if removedItem !== undefined:
+myJSON.foo.fooMore === { fooMost: "hey!" };
 ```
-alias is remove(json, path, value)
-#### function pushInNestedArray(json, path, item)
+alias is remove(json, path, value).
+### function pushInNestedArray(json, path, item)
 Pushes item into a nested array in json.
 ```
-let myJSON = { foo: { fooMoreArray: [ "hey!", "bye!" ] } };
-modifyNested(myJSON, "foo.fooMoreArray", "wow!");
-myJSON === { foo: { fooMoreArray: [ "hey!", "bye!", "wow!" ] } };
+let result = pushInNestedArray(myJSON, "foo.fooMore.fooArray", 4); // returns true if item was inserted
+into array, false if key not found or key is no array.
+
+// effect on myJSON if result === true:
+myJSON.foo.fooMore.fooArray === [ 1,2,3,5,4 ];
 ```
-alias is pushArray(json, path, item)
-#### function removeInNestedArray(json, path, item)
+alias is pushArray(json, path, item).
+### function removeInNestedArray(json, path, item)
 Removes item in a nested array in json.
 ```
-let myJSON = { foo: { fooMoreArray: [ "hey!", "bye!" ] } };
-modifyNested(myJSON, "foo.fooMoreArray", "bye!");
-myJSON === { foo: { fooMoreArray: [ "hey!" ] } };
+let removedItem = removeInNestedArray(myJSON, "foo.fooMore.fooArray", 3); // returns removed value if item was
+removed from array, false if key not found or key is no array or array does not containt item.
+
+// effect on myJSON if result !== undefined:
+myJSON.foo.fooMore.fooArray === [ 1,2,5,4 ];
 ```
-alias is removeArray(json, path, item)
+alias is removeArray(json, path, item).
