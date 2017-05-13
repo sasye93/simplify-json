@@ -29,7 +29,13 @@ let myJSON = {
   },
 };
 ```
-
+### function isJSON(object)
+Returns true if object is a valid json, false if not.
+```
+isJSON(myJSON) === true;
+isJSON("foo") === false;
+```
+No alias.
 ### function empty(json)
 Returns true if json is empty, false otherwise.
 ```
@@ -42,6 +48,7 @@ Returns the number of keys in json, including subkeys.
 ```
 size(myJSON) === 5;
 ```
+No alias.
 ### function getNested(json, path)
 Returns the value of a nested key using string syntax for path.
 ```
