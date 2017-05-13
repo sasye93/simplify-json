@@ -37,6 +37,11 @@ empty({}) === true;
 empty(myJSON) === false;
 ```
 No alias.
+### function size(json)
+Returns the number of keys in json, including subkeys.
+```
+size(myJSON) === 5;
+```
 ### function getNested(json, path)
 Returns the value of a nested key using string syntax for path.
 ```
