@@ -42,6 +42,7 @@ Returns the value of a nested key using string syntax for path.
 ```
 getNested(myJSON, "foo.fooMore.fooMost"); // returns "hey!"
 getNested(myJSON, "foo.fooMore.fooNo"); // returns undefined
+getNested(myJSON, ""); // returns myJSON
 ```
 alias is get(json, path).
 ### function modifyNested(json, path, value)
@@ -84,3 +85,9 @@ removed from array, false if key not found or key is no array or array does not 
 myJSON.foo.fooMore.fooArray === [ 1,2,5,4 ];
 ```
 alias is removeArray(json, path, item).
+
+### function stringifyNoCircular(json)
+Converts a JSON object to a string, omitting circular references in it.
+```
+
+```
