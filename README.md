@@ -84,7 +84,7 @@ alias is remove(json, path, value).
 ### function findNested(json, key)
 Returns an array of all values that have "key" as key.
 ```
-let matches = removeNested(myJSON, "foo.fooMore.fooMass"); // if nothing is found, array is empty.
+let matches = removeNested(myJSON, "foo"); // if nothing is found, array is empty.
 
 matches ===
 [ { fooMore: { fooMost: 'hey!', fooMass: 'bye!', foo: true },
