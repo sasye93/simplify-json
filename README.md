@@ -22,9 +22,16 @@ Provided methods are listed below, each one with exemplary use on "myJSON" objec
 
 - [simplify-json](#simplify-json)
   - [`empty(json)`](#emptyjson)
+  - [`size(json)`](#sizejson)
+  - [`getNested(json, path)`](#getnestedjsonpath)
+  - [`modifyNested(json, path, value)`](#modifynestedjsonpathvalue)
+  - [`removenested(json, path)`](#removenestedjsonpath)
+  - [`findnested(json, key)`](#findnestedjsonkey)
+  - [`pushInNestedArray(json, path, item)`](#pushinnestedarrayjsonpathitem)
+  - [`removeInNestedArray(json, path, item)`](#removeinnestedarrayjsonpathitem)
 
-```
-let myJSON = {
+```js
+var myJSON = {
   foo: {
     fooMore: {
       fooMost: "hey!",
@@ -41,49 +48,49 @@ let myJSON = {
 No alias.
 ### `empty(json)`
 Returns true if json is empty, false otherwise.
-```
+```js
 empty({}) === true;
 empty(myJSON) === false;
 ```
 No alias.
-### function size(json)
+### `size(json)`
 Returns the number of keys in json, including subkeys.
-```
+```js
 size(myJSON) === 8;
 ```
 No alias.
-### function getNested(json, path)
+### `getNested(json, path)`
 Returns the value of a nested key using string syntax for path.
-```
+```js
 getNested(myJSON, "foo.fooMore.fooMost"); // returns "hey!"
 getNested(myJSON, "foo.fooMore.fooNo"); // returns undefined
 getNested(myJSON, ""); // returns myJSON object
 ```
 alias is get(json, path).
-### function modifyNested(json, path, value)
+### `modifyNested(json, path, value)`
 Changes the value of a nested key using string syntax for path.
-```
-let result = modifyNested(myJSON, "foo.fooMore.fooMost", "bye!"); // returns true if new value was set,
+```js
+var result = modifyNested(myJSON, "foo.fooMore.fooMost", "bye!"); // returns true if new value was set,
 false if key not found.
 
 // effect on myJSON if result === true:
 myJSON.foo.fooMore.fooMost === "bye!";
 ```
 alias is modify(json, path, value).
-### function removeNested(json, path)
+### `removeNested(json, path)`
 Removes a nested key using string syntax for path.
-```
-let removedItem = removeNested(myJSON, "foo.fooMore.fooMass"); // returns removed value if key was removed,
+```js
+var removedItem = removeNested(myJSON, "foo.fooMore.fooMass"); // returns removed value if key was removed,
 undefined if key not found.
 
 // effect on myJSON if removedItem !== undefined:
 myJSON.foo.fooMore === { fooMost: "hey!" };
 ```
 alias is remove(json, path, value).
-### function findNested(json, key)
+### `findNested(json, key)`
 Returns an array of all values that have "key" as key.
-```
-let matches = removeNested(myJSON, "foo"); // if nothing is found, array is empty.
+```js
+var matches = removeNested(myJSON, "foo"); // if nothing is found, array is empty.
 
 matches ===
 [ { fooMore: { fooMost: 'hey!', fooMass: 'bye!', foo: true },
@@ -93,20 +100,20 @@ matches ===
   { fooYou: 'no' } ];
 ```
 alias is find(json, key).
-### function pushInNestedArray(json, path, item)
+### `pushInNestedArray(json, path, item)`
 Pushes item into a nested array in json.
-```
-let result = pushInNestedArray(myJSON, "foo.fooMore.fooArray", 4); // returns true if item was inserted
+```js
+var result = pushInNestedArray(myJSON, "foo.fooMore.fooArray", 4); // returns true if item was inserted
 into array, false if key not found or key is no array.
 
 // effect on myJSON if result === true:
 myJSON.foo.fooMore.fooArray === [ 1,2,3,5,4 ];
 ```
 alias is pushArray(json, path, item).
-### function removeInNestedArray(json, path, item)
+### `removeInNestedArray(json, path, item)`
 Removes item in a nested array in json.
-```
-let removedItem = removeInNestedArray(myJSON, "foo.fooMore.fooArray", 3); // returns removed value if item was
+```js
+var removedItem = removeInNestedArray(myJSON, "foo.fooMore.fooArray", 3); // returns removed value if item was
 removed from array, false if key not found or key is no array or array does not containt item.
 
 // effect on myJSON if result !== undefined:
