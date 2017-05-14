@@ -25,8 +25,8 @@ Provided methods are listed below, each one with exemplary use on "myJSON" objec
   - [`size(json)`](#sizejson)
   - [`getNested(json, path)`](#getnestedjson-path)
   - [`modifyNested(json, path, value)`](#modifynestedjson-path-value)
-  - [`removenested(json, path)`](#removenestedjson-path)
-  - [`findnested(json, key)`](#findnestedjson-key)
+  - [`removeNested(json, path)`](#removenestedjson-path)
+  - [`findNested(json, key)`](#findnestedjson-key)
   - [`pushInNestedArray(json, path, item)`](#pushinnestedarrayjson-path-item)
   - [`removeInNestedArray(json, path, item)`](#removeinnestedarrayjson-path-item)
   - [`noCircular(json)`](#nocircularjson)
@@ -72,7 +72,7 @@ getNested(myJSON, ""); // returns myJSON object
 alias is get(json, path).
 
 ### `modifyNested(json, path, value)`
-Changes the value of a nested key using string syntax for path. Returns true if new value was set, false if key was not found.
+Changes the value of a nested key using string syntax for path. Returns the value of the modified key before modification if new value was set succesfully, undefined if key was not found.
 ```js
 var result = modifyNested(myJSON, "foo.fooMore.fooMost", "bye!");
 
