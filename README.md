@@ -54,7 +54,7 @@ empty(myJSON) === false;
 ```
 No alias.
 ### `size(json)`
-Returns the number of keys in json, including subkeys.
+Returns the number of keys in json, including subkeys. If json has a circular dependency, it returns undefined.
 ```js
 size(myJSON) === 8;
 ```
@@ -121,8 +121,9 @@ myJSON.foo.fooMore.fooArray === [ 1,2,5,4 ];
 ```
 alias is removeArray(json, path, item).
 
-### function stringifyNoCircular(json)
-Converts a JSON object to a string, omitting circular references in it.
+### `noCircular(json)`
+Checks json for circular dependency. Returns false if json has a circular dependency, true if not.
+```js
+noCircular(myJSON) === true;
 ```
-
-```
+No alias.
