@@ -1,6 +1,8 @@
 # simplify-json
 easy-to-use toolkit to handle JSON objects in node.js that lets you work with string paths.
-I originally build this to handle mongoose models in an automated way. Please note that this is still under development and use on your own risk.
+I originally build this to handle mongoose models in an automated way. Please note that this is still under development.
+
+NOTE: THIS MODULE COMES WITH ABSOLUTELY NO WARANTY. USE AT YOUR OWN RISK.
 
 ## Installation
 Install via npm:
@@ -18,6 +20,9 @@ $ npm install
 
 Provided methods are listed below, each one with exemplary use on "myJSON" object.
 
+- [simplify-json](#simplify-json)
+  - ['empty(json)'](#function empty(json))
+
 ```
 let myJSON = {
   foo: {
@@ -33,12 +38,6 @@ let myJSON = {
   },
 };
 ```
-### function isJSON(object)
-Returns true if object is a valid json, false if not.
-```
-isJSON(myJSON) === true;
-isJSON("foo") === false;
-```
 No alias.
 ### function empty(json)
 Returns true if json is empty, false otherwise.
@@ -50,7 +49,7 @@ No alias.
 ### function size(json)
 Returns the number of keys in json, including subkeys.
 ```
-size(myJSON) === 5;
+size(myJSON) === 8;
 ```
 No alias.
 ### function getNested(json, path)
@@ -58,7 +57,7 @@ Returns the value of a nested key using string syntax for path.
 ```
 getNested(myJSON, "foo.fooMore.fooMost"); // returns "hey!"
 getNested(myJSON, "foo.fooMore.fooNo"); // returns undefined
-getNested(myJSON, ""); // returns myJSON
+getNested(myJSON, ""); // returns myJSON object
 ```
 alias is get(json, path).
 ### function modifyNested(json, path, value)
