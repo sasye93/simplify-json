@@ -21,7 +21,7 @@ $ npm install
 Provided methods are listed below, each one with exemplary use on "myJSON" object.
 
 - [simplify-json](#simplify-json)
-  - ['empty(json)'](#function empty(json))
+  - [`empty(json)`](# function empty(json))
 
 ```
 let myJSON = {
