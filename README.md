@@ -39,7 +39,7 @@ let myJSON = {
 };
 ```
 No alias.
-### function empty(json)
+### function `empty(json)`
 Returns true if json is empty, false otherwise.
 ```
 empty({}) === true;
