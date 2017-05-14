@@ -21,7 +21,7 @@ $ npm install
 Provided methods are listed below, each one with exemplary use on "myJSON" object.
 
 - [simplify-json](#simplify-json)
-  - [`empty(json)`](# function empty(json))
+  - [`empty(json)`](#empty(json))
 
 ```
 let myJSON = {
@@ -39,7 +39,7 @@ let myJSON = {
 };
 ```
 No alias.
-### function empty(json)
+### function 'empty(json)'
 Returns true if json is empty, false otherwise.
 ```
 empty({}) === true;
