@@ -23,12 +23,12 @@ Provided methods are listed below, each one with exemplary use on "myJSON" objec
 - [simplify-json](#simplify-json)
   - [`empty(json)`](#emptyjson)
   - [`size(json)`](#sizejson)
-  - [`getNested(json, path)`](#getnestedjsonpath)
-  - [`modifyNested(json, path, value)`](#modifynestedjsonpathvalue)
-  - [`removenested(json, path)`](#removenestedjsonpath)
-  - [`findnested(json, key)`](#findnestedjsonkey)
-  - [`pushInNestedArray(json, path, item)`](#pushinnestedarrayjsonpathitem)
-  - [`removeInNestedArray(json, path, item)`](#removeinnestedarrayjsonpathitem)
+  - [`getNested(json, path)`](#getnestedjson-path)
+  - [`modifyNested(json, path, value)`](#modifynestedjson-path-value)
+  - [`removenested(json, path)`](#removenestedjson-path)
+  - [`findnested(json, key)`](#findnestedjson-key)
+  - [`pushInNestedArray(json, path, item)`](#pushinnestedarrayjson-path-item)
+  - [`removeInNestedArray(json, path, item)`](#removeinnestedarrayjson-path-item)
 
 ```js
 var myJSON = {
