@@ -23,7 +23,11 @@ let myJSON = {
   foo: {
     fooMore: {
       fooMost: "hey!",
-      fooMass: "bye!"
+      fooMass: "bye!",
+      foo: true,
+    },
+    foo: {
+      fooYou: "no",
     },
     fooArray: [ 1,2,3,5 ]
   },
@@ -77,6 +81,19 @@ undefined if key not found.
 myJSON.foo.fooMore === { fooMost: "hey!" };
 ```
 alias is remove(json, path, value).
+### function findNested(json, key)
+Returns an array of all values that have "key" as key.
+```
+let matches = removeNested(myJSON, "foo.fooMore.fooMass"); // if nothing is found, array is empty.
+
+matches ===
+[ { fooMore: { fooMost: 'hey!', fooMass: 'bye!', foo: true },
+    foo: { fooYou: 'no' },
+    fooArray: [ 1, 2, 3, 5 ] },
+  true,
+  { fooYou: 'no' } ];
+```
+alias is find(json, key).
 ### function pushInNestedArray(json, path, item)
 Pushes item into a nested array in json.
 ```
